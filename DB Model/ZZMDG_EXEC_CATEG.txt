@@ -1,0 +1,73 @@
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750               ZZMDG_EXEC_CATEG
+        ______________________________________________________________________
+
+
+        ZZMDG_EXEC_CATEG
+          Short description:MDG - Project Request - Executive Category
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 2
+          Total of field lengths: 62
+
+        Field Name         K Type Length Data Elem.
+        Short Text
+        ____________________________________________________________
+        EXEC_CATEGORY_ID   X CHAR      2 ZZMDG_EXEC_CATEGORY
+         MDG - Proj Request - Executive Category
+        EXEC_CATEGORY_TEXT   CHAR     60 VAL_TEXT
+         Short Text for Fixed Values
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:APPL0
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

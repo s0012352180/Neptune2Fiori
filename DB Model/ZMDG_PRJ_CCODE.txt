@@ -1,0 +1,73 @@
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750                 ZMDG_PRJ_CCODE
+        ______________________________________________________________________
+
+
+        ZMDG_PRJ_CCODE
+          Short description:MDG - Project Code Reques - Company Code list
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 3
+          Total of field lengths: 8
+
+        Field Name        K Type Length Data Elem.     Short Text
+        ____________________________________________________________
+        MANDT             X CLNT      3 MANDT          Client
+        PROCESSING_REGION X CHAR      1 ZCACUSTPROCREG Processing region in customer form
+        COMPANY_CODE      X CHAR      4 BUKRS          Company Code
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:APPL0
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          PROCESSING_REGION checked against fixed values from domain ZCACUSTPROCREG
+          Fixed values:
+            A       Asia
+            E       Europe
+            U       US / Latin America
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

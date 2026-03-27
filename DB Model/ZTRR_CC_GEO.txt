@@ -1,0 +1,73 @@
+﻿
+
+
+
+
+        ABAP Dictionary                Rel. 757                     ZTRR_CC_GEO
+        ______________________________________________________________________
+
+
+        ZTRR_CC_GEO
+          Short description:Allow Geography by Company code
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 3
+          Total of field lengths: 11
+
+        Field Name K Type Length Data Elem.  Short Text
+        ____________________________________________________________
+        MANDT      X CLNT      3 MANDT       Client
+        BUKRS      X CHAR      4 BUKRS       Company Code
+        GEOGRAPHY  X CHAR      4 ZZGEOGRAPHY Geography
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:USER
+          Size category:0
+          Buffering now allowed
+          Logging switched on
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          BUKRS is checked against check table T001
+          Field assignment:
+            T001 - MANDT = ZTRR_CC_GEO - MANDT
+            T001 - BUKRS = ZTRR_CC_GEO - BUKRS
+
+          GEOGRAPHY is checked against check table ZTGEOGRAPHY
+          Field assignment:
+            ZTGEOGRAPHY - GEOGRAPHY = ZTRR_CC_GEO - GEOGRAPHY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                        27.03.2026                             1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

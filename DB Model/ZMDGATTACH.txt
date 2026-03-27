@@ -1,0 +1,73 @@
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750                    ZMDGATTACH
+        ______________________________________________________________________
+
+
+        ZMDGATTACH
+          Short description:Attachments to MDG forms
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 4
+          Total of field lengths: 125
+
+        Field Name    K Type Length Data Elem.
+        Short Text
+        ____________________________________________________________
+        MANDT         X CLNT      3 MANDT
+         Client
+        FORM_GUID     X CHAR     32 SYSUUID_C
+         UUID in character form
+        ATTACHMENT_ID X CHAR     70 SIBFBORIID
+         Instance Ident. in BOR Compat. Persistent Object References
+        CATEGORY        CHAR     20 ZMDGATTCAT
+         Attachment category in MDG forms
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:APPL1
+          Size category:1
+          Buffering now allowed
+          Logging switched off
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

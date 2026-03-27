@@ -1,0 +1,73 @@
+﻿
+
+
+
+
+        ABAP Dictionary                Rel. 757                       ZTBRAND_T
+        ______________________________________________________________________
+
+
+        ZTBRAND_T
+          Short description:Brand Text Table
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 3
+          Total of field lengths: 56
+
+        Field Name K Type Length Data Elem. Short Text
+        ____________________________________________________________
+        BRAND      X CHAR      5 ZZBRAND    Brand
+        SPRAS      X LANG      1 SPRAS      Language Key
+        NAME         CHAR     50 TEXT50     Text Field
+        ____________________________________________________________
+          Fields with conversion routines:
+            Field name      Conversion routine
+            SPRAS           ISOLA
+
+
+        Technical Settings
+          Data type:APPL0
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          BRAND is checked against check table ZTBRAND
+          Field assignment:
+            ZTBRAND - BRAND = ZTBRAND_T - BRAND
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                        27.03.2026                             1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

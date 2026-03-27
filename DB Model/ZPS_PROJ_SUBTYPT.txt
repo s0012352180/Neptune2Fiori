@@ -1,0 +1,73 @@
+﻿
+
+
+
+
+        ABAP Dictionary                Rel. 757                 ZPS_PROJ_SUBTYPT
+        ______________________________________________________________________
+
+
+        ZPS_PROJ_SUBTYPT
+          Short description:Project subtype texts
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 4
+          Total of field lengths: 261
+
+        Field Name      K Type Length Data Elem.        Short Text
+        ____________________________________________________________
+        MANDT           X CLNT      3 MANDT             Client
+        PROJECT_SUBTYPE X NUMC      2 ZMDG_PROJ_SUBTYPE Project subtype
+        LANGUAGE        X LANG      1 SPRAS             Language Key
+        DESCRIPTION       CHAR    255 TEXT255           Text, 255 Characters
+        ____________________________________________________________
+          Fields with conversion routines:
+            Field name      Conversion routine
+            LANGUAGE        ISOLA
+
+
+        Technical Settings
+          Data type:APPL2
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          PROJECT_SUBTYPE is checked against check table ZPS_PROJ_SUBTYPE
+          Field assignment:
+            ZPS_PROJ_SUBTYPE - MANDT = ZPS_PROJ_SUBTYPT - MANDT
+            ZPS_PROJ_SUBTYPE - PROJECT_SUBTYPE = ZPS_PROJ_SUBTYPT - PROJECT_SUBTYPE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                        27.03.2026                             1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

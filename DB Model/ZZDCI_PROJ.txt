@@ -1,0 +1,73 @@
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750                     ZZDCI_PROJ
+        ______________________________________________________________________
+
+
+        ZZDCI_PROJ
+          Short description:List of external project codes
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 5
+          Total of field lengths: 55
+
+        Field Name    K Type Length Data Elem.         Short Text
+        ____________________________________________________________
+        MANDT         X CLNT      3 MANDT              Client
+        ZZPROJECT     X CHAR     10 ZZDEPROJECT        Project Code
+        ZZDESCRIPTION   CHAR     40 ZZDEPROJDESC       Project Description
+        LABOR_IND       CHAR      1 ZTS_DE_LABOR_IND   Project Timesheet Labor Indicator
+        CAP_ACTIVE      CHAR      1 ZTS_DE_CAPITAL_IND Project Timesheet Labor Indicator
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:USER
+          Size category:0
+          Buffering now allowed
+          Logging switched on
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          LABOR_IND checked against fixed values from domain FLAG
+          Fixed values:
+                    Flag is Not Set
+            X       Flag set. Event has occurred.
+
+          CAP_ACTIVE checked against fixed values from domain FLAG
+          Fixed values:
+                    Flag is Not Set
+            X       Flag set. Event has occurred.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

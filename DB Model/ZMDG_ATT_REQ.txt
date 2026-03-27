@@ -1,0 +1,73 @@
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750                   ZMDG_ATT_REQ
+        ______________________________________________________________________
+
+
+        ZMDG_ATT_REQ
+          Short description:Attachment requirements by region
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 5
+          Total of field lengths: 57
+
+        Field Name   K Type Length Data Elem. Short Text
+        ____________________________________________________________
+        MANDT        X CLNT      3 MANDT      Client
+        FORM_NAME    X CHAR     30 ZFORM_NAME MDG - Form Name
+        ATT_CATEGORY X CHAR     20 ZMDGATTCAT Attachment category in MDG forms
+        COUNTRY      X CHAR      3 LAND1      Country Key
+        REQUIRED       CHAR      1 ZMDGATTREQ Indicator: attachment is required
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:APPL2
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          FORM_NAME is checked against check table ZCA_FORM
+          Field assignment:
+            ZCA_FORM - FORM_NAME = ZMDG_ATT_REQ - FORM_NAME
+            ZCA_FORM - FORM_VER = '0001' (constant)
+
+          ATT_CATEGORY is checked against check table ZMDGATTCATEGORY
+          Field assignment:
+            ZMDGATTCATEGORY - MANDT = ZMDG_ATT_REQ - MANDT
+            ZMDGATTCATEGORY - FORM_NAME = ZMDG_ATT_REQ - FORM_NAME
+            ZMDGATTCATEGORY - CATEGORY = ZMDG_ATT_REQ - ATT_CATEGORY
+
+          REQUIRED checked against fixed values from domain FLAG
+          Fixed values:
+                    Flag is Not Set
+            X       Flag set. Event has occurred.
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

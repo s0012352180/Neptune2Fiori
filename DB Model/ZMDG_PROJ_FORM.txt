@@ -1,0 +1,415 @@
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750                ZMDG_PROJ_FORM
+        ______________________________________________________________________
+
+
+        ZMDG_PROJ_FORM
+          Short description:MDG - Project Request Form
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 62
+          Total of field lengths: 3976
+
+        Field Name           K Type Length Data Elem.
+        Short Text
+        ____________________________________________________________
+        CLNT                 X CLNT      3 MANDT
+         Client
+        STEP_GUID            X CHAR     32 SYSUUID_C
+         UUID in character form
+        PROCESSING_REGION      CHAR      1 ZCACUSTPROCREG
+         Processing region in customer form
+        REQUESTER_NAME         CHAR    200 CHAR200L
+         Characterfield 200 with lowercase
+        REQUESTER_ID           CHAR     20 CHAR20
+         Char 20
+        AUTH_BY_ID             CHAR     20 CHAR20
+         Char 20
+        AUTH_BY_NAME           CHAR     75 ZCHAR75
+         Characterfield 75 with lowercase
+        AUTH_BY_DATE           DATS      8 SYDATUM
+         System Date
+        PROJECTNAME            CHAR     25 CHAR25
+         User field for cluster PC (national)
+        PROJ_DESC              CHAR   1024 CHAR1024
+         Character 1024
+        BUSS_JUSTIFY           CHAR   1024 CHAR1024
+         Character 1024
+        REPLACE_EXIT_PRJ       CHAR      5 ZTRUEFALSE
+         FIORI Appln - True/False
+        PREV_PROJ_CODE         CHAR     50 CHAR50
+         Comment
+        ITL_PREV_PROJ_CODE     CHAR     50 CHAR50
+         Comment
+        IMO_PREV_PROJ_CODE     CHAR     50 CHAR50
+         Comment
+        PROJECT_TYPE           CHAR      1 ZMDG_PROJ_TYPE
+         MDG - Project Type
+        ITL                    CHAR      1 ZBOOLEAN
+         MDG - Yes/No Value
+        CLS                    CHAR      1 ZBOOLEAN
+         MDG - Yes/No Value
+        CAPEX_REQ_AMOUNT       CURR     15 PROERLPLAN
+         Current project revenue plan
+        CAPEX_REQ_CURR         CUKY      5 RTCUR
+         Currency Key
+        ITL_REQ_AMOUNT         CURR     15 PROERLPLAN
+         Current project revenue plan
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750                ZMDG_PROJ_FORM
+        ______________________________________________________________________
+
+
+        Field Name           K Type Length Data Elem.
+        Short Text
+        ____________________________________________________________
+        ITL_REQ_CURR           CUKY      5 RTCUR
+         Currency Key
+        CAPEX_TI               CHAR      1 ZBOOLEAN
+         MDG - Yes/No Value
+        CAPEX_TI_AMT_INC       CHAR      1 ZBOOLEAN
+         MDG - Yes/No Value
+        CAPEX_TI_AMOUNT        CURR     15 PROERLPLAN
+         Current project revenue plan
+        RESP_LEAD              CHAR     12 XUBNAME
+         User Name in User Master Record
+        ONBEHALF_NAME          CHAR    200 ZMDGONBEHALFNAMEL
+         On Behalf Of Name with lowercase
+        ONBEHALF_ID            CHAR     20 CHAR20
+         Char 20
+        EXEC_CATEGORY          CHAR      2 ZZMDG_EXEC_CATEGORY
+         MDG - Proj Request - Executive Category
+        QUADRANT               CHAR      1 ZMDG_QUADRANT
+         MDG - Project Form - Quadrant
+        INITIATIVE_GROUP       CHAR     10 ZZMDG_INITIATIVE_GROUP
+         MDG - Project Request - Initiative Group
+        FUNCTION               CHAR      2 ZMDG_FUNCTION
+         MDG - Project Form - Function
+        ASSET_CLASS            CHAR      6 IM_PROFIL
+         Investment measure profile
+        ITL_ASSET_CLASS        CHAR      6 IM_PROFIL
+         Investment measure profile
+        PRIORITY               CHAR      1 ZMDG_PRIORITY
+         MDG - Project form - Prioritization
+        COMPANY_CODE           CHAR      4 BUKRS
+         Company Code
+        REQUEST_FROM           CHAR      1 ZZREQ_FROM
+         MDG - Request created status
+        CONS_INTERNALNO        CHAR    600 CHAR600
+         Char 600
+        ADDITIONAL_COMP_CODE   STRG        STRINGVAL
+         String
+        MORE_ADDI_COMPCODE     STRG        STRINGVAL
+         String
+        KOSTL                  CHAR     10 KOSTL
+         Cost Center
+        GEOGRAPHY              CHAR      4 ZZGEOGRAPHY
+         Geography
+        PROFIT_CENTER          CHAR     10 PRCTR
+         Profit Center
+        ORDER_TYPE             CHAR      4 ZMDG_ORDERTYPE
+         MDG - Project Request - Order Type
+        STATE_US               CHAR      3 REGIO
+         Region (State, Province, County)
+        CURRENCY               CUKY      5 CURRENCY
+         Currency Key
+        ORDER_DATE             DATS      8 SYDATUM
+         System Date
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            2
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750                ZMDG_PROJ_FORM
+        ______________________________________________________________________
+
+
+        Field Name           K Type Length Data Elem.
+        Short Text
+        ____________________________________________________________
+        PROJ_COMPLETION_DATE   DATS      8 SYDATUM
+         System Date
+        PROJECT_CODE           CHAR     12 AUFNR
+         Order Number
+        INTERNAL_NO            CHAR     20 CHAR20
+         Char 20
+        INTERNAL_NO_ERR        CHAR    100 CHAR100
+         Character 100
+        ITL_PROJ_CODE          CHAR     12 AUFNR
+         Order Number
+        ITL_INTERNAL_NO        CHAR     20 CHAR20
+         Char 20
+        ITL_INT_NO_ERROR       CHAR    100 CHAR100
+         Character 100
+        CLS_PROJ_CODE          CHAR     12 AUFNR
+         Order Number
+        CLS_INTERNAL_NO        CHAR     20 CHAR20
+         Char 20
+        CLS_INT_NO_ERROR       CHAR    100 CHAR100
+         Character 100
+        IS_SOFTWARE_REQ        CHAR      1 ZBOOLEAN
+         MDG - Yes/No Value
+        FPA_APPROVAL           CHAR      5 ZTRUEFALSE
+         FIORI Appln - True/False
+        RTR_APPROVAL           CHAR      5 ZTRUEFALSE
+         FIORI Appln - True/False
+        BPC_APPROVAL           CHAR      5 ZTRUEFALSE
+         FIORI Appln - True/False
+        COMMENTS               STRG        ALV_STRING
+         Filter String
+        ____________________________________________________________
+          Fields with reference fields:
+            Field name      Reference field
+            CAPEX_REQ_AMOUNTTCURC-WAERS
+            ITL_REQ_AMOUNT  TCURC-WAERS
+            CAPEX_TI_AMOUNT TCURC-WAERS
+
+          Fields with conversion routines:
+            Field name      Conversion routine
+            KOSTL           ALPHA
+            PROFIT_CENTER   ALPHA
+            PROJECT_CODE    ALPHA
+            ITL_PROJ_CODE   ALPHA
+            CLS_PROJ_CODE   ALPHA
+
+
+        Technical Settings
+          Data type:APPL0
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            3
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750                ZMDG_PROJ_FORM
+        ______________________________________________________________________
+
+
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          PROCESSING_REGION checked against fixed values from domain ZCACUSTPROCREG
+          Fixed values:
+            A       Asia
+            E       Europe
+            U       US / Latin America
+
+          REPLACE_EXIT_PRJ checked against fixed values from domain ZTRUEFALSE
+          Fixed values:
+            false   false
+            true    true
+
+          PROJECT_TYPE checked against fixed values from domain ZMDG_PROJ_TYPE
+          Fixed values:
+            1       Capex
+            2       ITL
+            3       CapLease
+            4       Capex (Upload Company)
+            5       Synergy
+
+          ITL checked against fixed values from domain ZBOOLEAN
+          Fixed values:
+            N       No
+            Y       Yes
+
+          CLS checked against fixed values from domain ZBOOLEAN
+          Fixed values:
+            N       No
+            Y       Yes
+
+          CAPEX_TI checked against fixed values from domain ZBOOLEAN
+          Fixed values:
+            N       No
+            Y       Yes
+
+          CAPEX_TI_AMT_INC checked against fixed values from domain ZBOOLEAN
+          Fixed values:
+            N       No
+            Y       Yes
+
+          QUADRANT checked against fixed values from domain ZMDG_QUADRANT
+          Fixed values:
+            1       Investment
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            4
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750                ZMDG_PROJ_FORM
+        ______________________________________________________________________
+
+
+
+          FUNCTION checked against fixed values from domain ZMDG_FUNCTION
+          Fixed values:
+            1       Global Systems
+
+          PRIORITY checked against fixed values from domain ZMDG_PRIORITY
+          Fixed values:
+            1       Low
+            2       Medium
+            3       High
+
+          REQUEST_FROM checked against fixed values from domain ZZREQ_FROM
+          Fixed values:
+                    Existing form
+            N       New
+            U       Update
+
+          ORDER_TYPE checked against fixed values from domain ZMDG_ORDERTYPE
+          Fixed values:
+            Z045    Z045
+            Z051    Z051
+            Z060    Z060
+
+          IS_SOFTWARE_REQ checked against fixed values from domain ZBOOLEAN
+          Fixed values:
+            N       No
+            Y       Yes
+
+          FPA_APPROVAL checked against fixed values from domain ZTRUEFALSE
+          Fixed values:
+            false   false
+            true    true
+
+
+
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            5
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750                ZMDG_PROJ_FORM
+        ______________________________________________________________________
+
+
+
+          RTR_APPROVAL checked against fixed values from domain ZTRUEFALSE
+          Fixed values:
+            false   false
+            true    true
+
+          BPC_APPROVAL checked against fixed values from domain ZTRUEFALSE
+          Fixed values:
+            false   false
+            true    true
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            6
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,73 @@
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750                ZZMDG_INITIA_GRP
+        ______________________________________________________________________
+
+
+        ZZMDG_INITIA_GRP
+          Short description:MDG - Project Form - Initiative Group
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 3
+          Total of field lengths: 112
+
+        Field Name         K Type Length Data Elem.
+        Short Text
+        ____________________________________________________________
+        EXEC_CATEGORY_ID   X CHAR      2 ZZMDG_EXEC_CATEGORY
+         MDG - Proj Request - Executive Category
+        INITIATIVE_GRP_ID  X CHAR     10 ZZMDG_INITIATIVE_GROUP
+         MDG - Project Request - Initiative Group
+        INITIATIVE_GRP_TXT   CHAR    100 ANST_CHAR100
+         Char 100 on lowercase
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:APPL0
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

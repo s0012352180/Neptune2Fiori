@@ -1,0 +1,73 @@
+﻿
+
+
+
+
+        ABAP Dictionary                Rel. 757                 ZPS_TEMPLATE_MAP
+        ______________________________________________________________________
+
+
+        ZPS_TEMPLATE_MAP
+          Short description:Project type to template mapping
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 4
+          Total of field lengths: 30
+
+        Field Name      K Type Length Data Elem.        Short Text
+        ____________________________________________________________
+        MANDT           X CLNT      3 MANDT             Client
+        PROJECT_TYPE    X CHAR      1 ZMDG_PROJ_TYPE    MDG - Project Type
+        PROJECT_SUBTYPE X NUMC      2 ZMDG_PROJ_SUBTYPE Project subtype
+        STANDARD_WBS      CHAR     24 PS_SPDID          Project definition for standard project
+        ____________________________________________________________
+          Fields with conversion routines:
+            Field name      Conversion routine
+            STANDARD_WBS    ABPSN
+
+
+        Technical Settings
+          Data type:APPL2
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          PROJECT_TYPE checked against fixed values from domain ZMDG_PROJ_TYPE
+          Fixed values:
+            1       FV1
+            2       FV2
+            3       FV3
+            4       FV4
+            5       FV5
+            6       FV6
+
+          PROJECT_SUBTYPE is checked against check table ZPS_PROJ_SUBTYPE
+          Field assignment:
+            ZPS_PROJ_SUBTYPE - MANDT = ZPS_TEMPLATE_MAP - MANDT
+           ZPS_PROJ_SUBTYPE - PROJECT_SUBTYPE = ZPS_TEMPLATE_MAP - PROJECT_SUBTYPE
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                        27.03.2026                             1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

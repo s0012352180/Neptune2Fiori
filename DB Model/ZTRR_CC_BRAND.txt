@@ -1,0 +1,73 @@
+﻿
+
+
+
+
+        ABAP Dictionary                Rel. 757                   ZTRR_CC_BRAND
+        ______________________________________________________________________
+
+
+        ZTRR_CC_BRAND
+          Short description:Allow Brand by Company code
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 3
+          Total of field lengths: 12
+
+        Field Name K Type Length Data Elem. Short Text
+        ____________________________________________________________
+        MANDT      X CLNT      3 MANDT      Client
+        BUKRS      X CHAR      4 BUKRS      Company Code
+        BRAND      X CHAR      5 ZZBRAND    Brand
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:USER
+          Size category:0
+          Buffering now allowed
+          Logging switched on
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          BUKRS is checked against check table T001
+          Field assignment:
+            T001 - MANDT = ZTRR_CC_BRAND - MANDT
+            T001 - BUKRS = ZTRR_CC_BRAND - BUKRS
+
+          BRAND is checked against check table ZTBRAND
+          Field assignment:
+            ZTBRAND - BRAND = ZTRR_CC_BRAND - BRAND
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                        27.03.2026                             1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

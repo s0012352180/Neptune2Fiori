@@ -1,0 +1,73 @@
+
+
+
+
+
+        ABAP Dictionary                 Rel. 750               ZMDGATTCATEGORY
+        ______________________________________________________________________
+
+
+        ZMDGATTCATEGORY
+          Short description:Attachment category in MDG forms
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 4
+          Total of field lengths: 153
+
+        Field Name  K Type Length Data Elem.     Short Text
+        ____________________________________________________________
+        MANDT       X CLNT      3 MANDT          Client
+        FORM_NAME   X CHAR     30 ZFORM_NAME     MDG - Form Name
+        CATEGORY    X CHAR     20 ZMDGATTCAT     Attachment category in MDG forms
+        DESCRIPTION   CHAR    100 ZMDGATTCATTEXT Attachment category description in MDG forms
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:APPL2
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          FORM_NAME is checked against check table ZCA_FORM
+          Field assignment:
+            ZCA_FORM - FORM_NAME = ZMDGATTCATEGORY - FORM_NAME
+            ZCA_FORM - FORM_VER = '0001' (constant)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                         03/27/2026                            1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
