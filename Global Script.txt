@@ -1,0 +1,7 @@
+var listRef = null;
+var listIndex = null;
+var dirty = null;
+var fu = null;
+var dc = null;
+
+var userField = null;

@@ -1,0 +1,368 @@
+// function setCompanyCodes() {
+//     insfCompanyCode.setSelectedKeys(modelsectionDIM.oData.DIM_VALID_CCODE.split(","));
+// }
+
+function showMessage(message, state) {
+    var msgDialog = new sap.m.Dialog({
+        state: state,
+        title: "Attention",
+        endButton: new sap.m.Button({
+            icon: "sap-icon://sys-cancel",
+            press: function(evt) {
+                evt.oSource.getParent().close();
+            }
+        }),
+        content: new sap.m.Text({
+            text: message
+        })
+    });
+    msgDialog.open();
+}
+
+function loadRequest(evt) {
+    ;
+    btnNavBack.setVisible(true);
+    modelUrlParameters.setProperty("/FORM_GUID", evt.detail.FORM);
+    modelUrlParameters.setProperty("/PROJ", evt.detail.ID);
+    modelUrlParameters.setProperty("/FROM", evt.detail.FROM);
+
+    if (evt.detail.PROJREQ === 'NEW' || evt.detail.PROJREQ === 'requests' || evt.detail.ID === '') {
+        modelUrlParameters.setProperty("/MODE", "");
+    } else if (evt.detail.FROM === 'search') {
+        modelUrlParameters.setProperty("/MODE", "DISPLAY");
+    } else {
+        modelUrlParameters.setProperty("/MODE", "CHANGE");
+    }
+
+    oApp.setBusy(true);
+    getOnlineGetDetail();
+}
+
+function getControlName(cname) {
+    if (oApp.sId.indexOf("__jsview") >= 0) {
+        return oApp.sId.split("--")[0] + "--" + cname;
+    } else {
+        return cname;
+    }
+}
+
+function updateinitgrp() {
+
+
+    if (modelcntr_formdetails.oData.APPR_STEP === "FPA") {
+        oSelectInitPrd_Grp.destroyItems();
+
+        // Empty row
+        oSelectInitPrd_Grp.setSelectedKey() == '';
+        oSelectInitPrd_Grp.addItem(new sap.ui.core.Item({
+            key: "",
+            text: ""
+        }));
+
+        $.each(modeloTableINITIA_GRP.oData, function(i, data) {
+            if (modeloPageProj.oData.EXEC_CATEGORY === data.EXEC_CATEGORY_ID) {
+                oSelectInitPrd_Grp.addItem(new sap.ui.core.Item({
+                    key: data.INITIATIVE_GRP_ID,
+                    text: data.INITIATIVE_GRP_TXT
+                }));
+
+            }
+        });
+
+    }
+
+}
+
+function getUrlParameters() {
+    // ;
+    var query = "";
+    var form = "";
+    var from = "";
+
+    if (window.location.href.indexOf("/ui2/flp") >= 0) {
+        query = window.location.hash.split("?")[1];
+    } else {
+        query = window.location.search.split("?")[1];
+    }
+
+    if (query) {
+        var params = query.split("&");
+        params.forEach(function(param) {
+            var keyvalue = param.split("=");
+            switch (keyvalue[0]) {
+                case "form_guid":
+                    form = keyvalue[1];
+                    break;
+            }
+        });
+    }
+
+
+    if (form && form.trim() !== "") {
+        modelUrlParameters.setProperty("/FORM_GUID", form);
+        //modelUrlParameters.setProperty("/MODE", "CHANGE");
+    }
+}
+
+function loadCSS(filename) {
+    var fileref = document.createElement("link");
+    fileref.setAttribute("rel", "stylesheet");
+    fileref.setAttribute("type", "text/css");
+    fileref.setAttribute("href", filename + "?v=" + new Date().toISOString());
+    document.getElementsByTagName("head")[0].appendChild(fileref);
+}
+
+function fileUploadHandler() {
+    var fileUpload = document.getElementById(oFileUploader.getDomRef().id + "-fu");
+    fileUpload.addEventListener("change", function() {
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            var newAttachment = {
+                ICON: "sap-icon://document",
+                ICON_COLOR: "",
+                FILE_NAME: fileUpload.files[0].name,
+                EXTENSION: fileUpload.files[0].name.split(".").pop(),
+                MIME_TYPE: fileUpload.files[0].type,
+                FILE_DATA: event.target.result,
+                UUID: "",
+            };
+            if (newAttachment.FILE_DATA.substring(0, 4) === "data") {
+                newAttachment.FILE_DATA = newAttachment.FILE_DATA.substring(newAttachment.FILE_DATA.indexOf(',') + 1);
+            }
+            ModelData.Add(listAttachments, newAttachment);
+            oFileUploader.clear();
+            diaAddAttachment.close();
+
+            oplForm.scrollToSection("sectionAttachments");
+        };
+        reader.readAsDataURL(fileUpload.files[0]);
+    }, {
+        once: true
+    });
+}
+
+function displayAttachment(attachment) {
+    if (typeof attachment.FILE_DATA !== "undefined" && attachment.FILE_DATA.length > 0) {
+        var byteCharacters = atob(attachment.FILE_DATA);
+        var byteNumbers = new Array(byteCharacters.length);
+        for (var i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        var blob = new Blob([new Uint8Array(byteNumbers)], {
+            type: attachment.MIME_TYPE
+        });
+        if (window.navigator &&
+            window.navigator.msSaveOrOpenBlob) {
+            window.navigator.msSaveOrOpenBlob(blob, attachment.FILE_NAME);
+        } else {
+            window.open(URL.createObjectURL(blob), "_blank");
+        }
+    } else {
+        // Retrieve data from backend if necessary.
+        var keyId = "form=" + modelvlAttributesBlock1.oData.FORM_GUID + ",att=" + attachment.UUID;
+        var url = "/neptune/zdci_nad_project_request.html?key=attachment&key_id=" + keyId;
+        window.open(url, "_blank");
+    }
+}
+
+function getControlName(cname) {
+    if (oApp.sId.indexOf("__jsview") >= 0) {
+        return oApp.sId.split("--")[0] + "--" + cname;
+    } else {
+        return cname;
+    }
+}
+
+function setDirty(dirty) {
+    isDirty = dirty;
+}
+
+function visible_additional_field() {
+    modeloPageProj.setProperty("/V_PROJECT_SUBTYPE",
+        modeloPageProj.oData.PROJECT_TYPE === "5");
+    debugger
+    var type = modeloPageProj.oData.PROJECT_TYPE;
+    var capexti_val = modeloPageProj.oData.CAPEX_TI;
+    var subtype = (typeof modeloPageProj.oData.PROJECT_SUBTYPE === "string" && modeloPageProj.oData.PROJECT_SUBTYPE.trim().length > 0) ?
+        modeloPageProj.oData.PROJECT_SUBTYPE : "00";
+
+    var required = ModelData.Find(AttachmentsRequired, ["PROJECT_TYPE", "PROJECT_SUBTYPE", "REQUIRED"],
+        [type, subtype, true],
+        ["EQ", "EQ", "EQ"]);
+
+    let formVis = [false, false, false];
+
+    for (let i = 0; i < required.length; i++) {
+        let cat = required[i];
+        switch (cat.ATT_CATEGORY) {
+            case "ACCOUNTING":
+                formVis[2] = true;
+                break;
+            case "CAPEX_LICENSE":
+                formVis[0] = true;
+                break;
+            case "SOFTWARE_LICENSE":
+                formVis[1] = true;
+                break;
+        }
+    }
+
+    vbAttCAPEXLicenses.setVisible(formVis[0]);
+    vbAttSoftwareLicense.setVisible(formVis[1]);
+    vbAttAccounting.setVisible(formVis[2]);
+
+    if (type === "3" && !rbITLYes.getSelected()) {
+        vbAttAccounting.setVisible(false);
+    }
+
+    //ENHC0019081 - Begin TI - Tenant Improvement
+    debugger
+    if (type === "2") {
+        oLblTIFundReq.setVisible(true);
+        oLblTIFundReq.setRequired(true);
+        rbTI_Fund_Yes.setVisible(true);
+        rbTI_Fund_No.setVisible(true);
+
+        if (capexti_val === "Y" || capexti_val === "N") {
+            // Check and update selection TI Fund
+            if (capexti_val === "Y") {
+                rbTI_Fund_Yes.setSelected(true);
+                rbTI_Fund_No.setSelected(false);
+
+                oLblTIAmtReq.setVisible(true);
+                oLblTIAmtReq.setRequired(true);
+                rbTI_Amount_Yes.setVisible(true);
+                rbTI_Amount_No.setVisible(true);
+
+            } else if (capexti_val === "N") {
+                rbTI_Fund_No.setSelected(true);
+                rbTI_Fund_Yes.setSelected(false);
+                oLblTIAmtReq.setVisible(false);
+                oLblTIAmtReq.setRequired(false);
+                rbTI_Amount_Yes.setVisible(false);
+                rbTI_Amount_No.setVisible(false);
+
+            }
+
+            // Check and update selection TI Amount
+            if (modeloPageProj.oData.CAPEX_TI_AMT_INC === "Y") {
+                rbTI_Amount_Yes.setSelected(true);
+                rbTI_Amount_No.setSelected(false);
+            } else if (modeloPageProj.oData.CAPEX_TI_AMT_INC === "N") {
+                rbTI_Amount_No.setSelected(true);
+                rbTI_Amount_Yes.setSelected(false);
+            }
+
+        } else {
+            oLblTIAmtReq.setVisible(false);
+            oLblTIAmtReq.setRequired(false);
+            rbTI_Amount_Yes.setVisible(false);
+            rbTI_Amount_No.setVisible(false);
+            modeloPageProj.oData.CAPEX_TI = "";
+            modeloPageProj.oData.CAPEX_TI_AMT_INC = "";
+        }
+
+    } else {
+        oLblTIFundReq.setVisible(false);
+        oLblTIFundReq.setRequired(false);
+        rbTI_Fund_Yes.setVisible(false);
+        rbTI_Fund_No.setVisible(false);
+        rbTI_Fund_Yes.setSelected(false);
+        rbTI_Fund_No.setSelected(false);
+
+        oLblTIAmtReq.setVisible(false);
+        oLblTIAmtReq.setRequired(false);
+        rbTI_Amount_Yes.setSelected(false);
+        rbTI_Amount_No.setSelected(false);
+        rbTI_Amount_Yes.setVisible(false);
+        rbTI_Amount_No.setVisible(false);
+
+        modeloPageProj.oData.CAPEX_TI = "";
+        modeloPageProj.oData.CAPEX_TI_AMT_INC = "";
+    }
+
+    //ENHC0019081 - End TI - Tenant Improvement
+
+    modeloPageProj.setProperty("/V_ITL", type === "3");
+    //modeloPageProj.setProperty("/V_SOFTWARE_REQ",type === "3");
+
+    inpCAPEX_Amount.setVisible(type !== "6");
+    oSelectCAPCURR.setVisible(type !== "6");
+    vbFPAApprovalAtt.setVisible(type !== "6");
+}
+
+function set_TI_funding_visible() {
+    debugger;
+    var settifundingvisible = "";
+    if (modeloPageProj.oData.CAPEX_TI === "Y" || rbTI_Fund_Yes.getSelected()) {
+        settifundingvisible = "X";
+    } else {
+        settifundingvisible = "";
+    }
+
+    if (settifundingvisible == "X") {
+        oLblTIAmtReq.setVisible(true);
+        oLblTIAmtReq.setRequired(true);
+        rbTI_Amount_Yes.setVisible(true);
+        rbTI_Amount_No.setVisible(true);
+        rbTI_Amount_Yes.setSelected(false);
+        rbTI_Amount_No.setSelected(false);
+    } else {
+        oLblTIAmtReq.setVisible(false);
+        oLblTIAmtReq.setRequired(false);
+        rbTI_Amount_Yes.setSelected(false);
+        rbTI_Amount_No.setSelected(false);
+    }
+
+
+}
+
+function clear_value() {
+    // Clear Value based on the condition
+    // if (!inpExistProj.getState()) {
+    //     modeloPageProj.oData.REPLACE_EXIT_PRJ = false;
+    //     modeloPageProj.oData.PREV_PROJ_CODE = "";
+    //     modeloPageProj.oData.ITL_PREV_PROJ_CODE = "";
+    //     modeloPageProj.refresh();
+    // } else if (inpExistProj.getState() && (!rbITLYes.getSelected())) {
+    //     modeloPageProj.oData.ITL_PREV_PROJ_CODE = "";
+    //     modeloPageProj.refresh();
+    // }
+}
+
+function set_visibility_amount() {
+
+}
+
+function set_attachment_visible() {
+
+}
+
+function set_projcode_button() {
+    if (inpProjCode.getSelectedKey().length === 0) {
+        BtnProjectCode.setEnabled(true);
+        BtnProjectCodeClear.setEnabled(false);
+    } else {
+        BtnProjectCode.setEnabled(false);
+        BtnProjectCodeClear.setEnabled(true);
+    }
+}
+
+function setprocessingregion() {
+    switch (modeloPageProj.oData.PROCESSING_REGION) {
+        case 'U':
+            rbgQProcessingRegion.setSelectedIndex(0);
+            break;
+        case 'E':
+            rbgQProcessingRegion.setSelectedIndex(1);
+            break;
+        case 'A':
+            rbgQProcessingRegion.setSelectedIndex(2);
+            break;
+        default:
+            modeloPageProj.oData.PROCESSING_REGION = 'U';
+            rbgQProcessingRegion.setSelectedIndex(0);
+
+    }
+
+}

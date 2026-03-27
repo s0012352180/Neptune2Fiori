@@ -1,0 +1,361 @@
+var forms = [];
+forms.push(sfBudgetManagerBlock1);
+forms.push(sfBudgetProj);
+forms.push(sfBudgetProj2);
+forms.push(sfFPAAppr);
+forms.push(sfRTRAppr);
+forms.push(sfBPCAppr);
+
+function validateRequiredAll() {
+
+    var error = false;
+
+    var currform = [];
+    // Get Model Data
+ ;
+    if (modeloPageProj.oData.PROJ_FLGRP_0001 || modeloPageProj.oData.PROJ_FLGRP_0005) {
+        currform.push(sfBudgetManagerBlock1);
+        currform.push(sfBudgetManagerBlock2);
+        currform.push(sfBudgetProj);
+        currform.push(sfBudgetProj2);
+
+    }
+    if (modeloPageProj.oData.PROJ_FLGRP_0002) {
+        currform.push(sfFPAAppr);
+
+    }
+    if (modeloPageProj.oData.PROJ_FLGRP_0003) {
+        currform.push(sfRTRAppr);
+
+    }
+    if (modeloPageProj.oData.PROJ_FLGRP_0004) {
+        currform.push(sfBPCAppr);
+    }
+
+    currform.forEach(function(form) {
+        form.getAggregation("form").getAggregation("formContainers")[0].getAggregation("formElements").forEach(function(element) {
+            var field = element.getFields()[0];
+
+            if (element.getLabel().getRequired()) {
+                if (validateRequired(field, form)) {
+                    error = true;
+                }
+
+            } else if (field._bValid === false) {
+
+                if (field instanceof sap.m.DatePicker) {
+
+                    field.setValueState(sap.ui.core.ValueState.Error);
+                    field.setValueStateText("Invalid date.");
+                    field.setShowValueStateMessage(true);
+                    field.focus();
+
+                    error = true;
+                }
+
+            }
+        });
+    });
+
+    return error;
+}
+
+function validateRequired(input, form) {
+    ////////// ;
+    var error = false;
+    if (typeof input.setValueState === "function") {
+        input.setValueState(sap.ui.core.ValueState.None);
+    }
+
+    if (!input.getVisible()) return false;
+    if (typeof input.getEnabled === "function" && !input.getEnabled()) return false;
+
+    if (input instanceof sap.m.Input || input instanceof sap.m.TextArea || input instanceof sap.m.DatePicker) {
+        if (input.getValue().length === 0) {
+            // autoExpand(form);
+            input.setValueState(sap.ui.core.ValueState.Error);
+            input.setValueStateText("Entry is required.");
+            input.setShowValueStateMessage(true);
+            input.focus();
+            error = true;
+        }
+    } else if (input instanceof sap.m.Switch) {
+        if (!input.getState()) {
+            input.addStyleClass("error-switch");
+            if (input === oSwitchFPAAppr ||
+                input === oSwitchRTRAppr ||
+                input === oSwitchBPCAppr) {
+                discoveryFiori.showMessage("Select 'YES' to acknowledge before you submit the form", sap.ui.core.ValueState.Error);
+                error = true;
+            }
+        }
+    } else if (input instanceof sap.m.Select || input instanceof sap.m.MultiComboBox) {
+        if (input.getSelectedKey().length === 0) {
+            input.setValueState(sap.ui.core.ValueState.Error);
+            input.setValueStateText("Entry is required.");
+            input.focus();
+            error = true;
+        }
+    } else if (input instanceof sap.m.RadioButtonGroup) {
+
+        error = false;
+        var selected = false;
+        input.getButtons().forEach(function(btn) {
+            if (btn.getSelected()) selected = true;
+        });
+
+        if (!selected) {
+            input.setValueState(sap.ui.core.ValueState.Error);
+            input.focus();
+            error = true;
+
+        }
+
+    } else if (input instanceof sap.m.VBox || input instanceof sap.m.HBox) {
+        input.getItems().forEach(function(item) {
+            if (validateRequired(item, form)) error = true;
+        });
+    }
+
+    return error;
+}
+
+function validate_date() {
+    var error = false;
+
+    if (dpOrderCompDate.getDateValue() < dporderdate.getDateValue()) {
+        dpOrderCompDate.setValueState(sap.ui.core.ValueState.Error);
+        dpOrderCompDate.setValueStateText("The Project Completion Date (estimated) is less than Order Date ");
+        dpOrderCompDate.setShowValueStateMessage(true);
+        dpOrderCompDate.focus();
+        error = true;
+    }
+
+    return error;
+}
+
+function validateAttachment() {
+    var error = false;
+    var count = 0;
+
+    var type = modeloPageProj.oData.PROJECT_TYPE;
+    var subtype = (typeof modeloPageProj.oData.PROJECT_SUBTYPE === "string" && modeloPageProj.oData.PROJECT_SUBTYPE.trim().length > 0)
+        ? modeloPageProj.oData.PROJECT_SUBTYPE : "00";
+
+    var required = ModelData.Find(AttachmentsRequired, ["PROJECT_TYPE","PROJECT_SUBTYPE","REQUIRED"],
+        [type,subtype,true],
+        ["EQ","EQ","EQ"]);
+
+    required.forEach(function(category) {
+        if (type === "3" && category.ATT_CATEGORY === "ACCOUNTING" && !rbITLYes.getSelected()) {
+            return;
+        }
+
+        if (ModelData.Find(listAttachments, "CATEGORY", category.ATT_CATEGORY, "EQ").length === 0) {
+            var cat = ModelData.Find(AttachmentCategories,"VALUE",category.ATT_CATEGORY,"EQ");
+            if (cat.length) {
+                if (type !== "3") {
+                    discoveryFiori.showMessage("You must attach " + cat[0].TEXT + " to this form before you submit it for approval.", sap.ui.core.ValueState.Error);
+                }
+                error = true;
+            }
+        }
+        else {
+            // Track how many requirements were satisfied.
+            count++;
+        }
+    });
+
+    if (type === "3") {
+        if (count > 1) {
+            error = false;
+        }
+        else {
+            if (rbITLYes.getSelected()) {
+                discoveryFiori.showMessage("You must attach the FP&A Approval Document and either"
+                + " the Accounting Questionnaire or CAPEX Software License"
+                + " to this form before you submit it for approval.", sap.ui.core.ValueState.Error);
+            }
+            else {
+                discoveryFiori.showMessage("You must attach the FP&A Approval Document and"
+                + " the CAPEX Software License"
+                + " to this form before you submit it for approval.", sap.ui.core.ValueState.Error);
+            }
+        }
+    }
+
+    return error;
+}
+
+function validateAmount() {
+    var error = false;
+
+    if (modeloPageProj.oData.PROJECT_TYPE === "6") {
+        return;
+    }
+
+    var capamount = Number(inpCAPEX_Amount.getValue());
+    var itlamount = Number(inpITL_Amount.getValue());
+
+    if ((oLblCAPEX_AMOUNT.getRequired()) && capamount <= 0) {
+        inpCAPEX_Amount.setValueState(sap.ui.core.ValueState.Error);
+        inpCAPEX_Amount.setValueStateText("The CAPEX Amount should be greater 0");
+        inpCAPEX_Amount.setShowValueStateMessage(true);
+        inpCAPEX_Amount.focus();
+        return true;
+    } else if ((oLblITL_AMOUNT.getRequired()) && itlamount <= 0) {
+        inpITL_Amount.setValueState(sap.ui.core.ValueState.Error);
+        inpITL_Amount.setValueStateText("The ITL requested Amount should be greater 0");
+        inpITL_Amount.setShowValueStateMessage(true);
+        inpITL_Amount.focus();
+        return true;
+    } else if ((oLblCAPEX_AMOUNT.getRequired()) && oSelectCAPCURR.getSelectedKey().length === 0) {
+        oSelectCAPCURR.setValueState(sap.ui.core.ValueState.Error);
+        oSelectCAPCURR.setValueStateText("Currency is required");
+        oSelectCAPCURR.focus();
+        error = true;
+    } else if ((oLblITL_AMOUNT.getRequired()) && oSelectITLCURR.getSelectedKey().length === 0) {
+        oSelectITLCURR.setValueState(sap.ui.core.ValueState.Error);
+        oSelectITLCURR.setValueStateText("Currency is required");
+        oSelectITLCURR.focus();
+        error = true;
+    }
+}
+
+function validate_projname() {
+    return false;
+    /*
+    var error = false;
+    if (oTxtProjDesc.getValue().length < 74) {
+        oTxtProjDesc.setValueState(sap.ui.core.ValueState.Error);
+        oTxtProjDesc.setValueStateText("The Project description should be min. of 75 Character");
+        oTxtProjDesc.setShowValueStateMessage(true);
+        oTxtProjDesc.focus();
+        error = true;
+    }
+
+    return error;
+    */
+}
+
+function validate_bussjustname() {
+    var error = false;
+    if (oTxtProjBussJust.getValue() == oTxtProjDesc.getValue()) {
+        oTxtProjBussJust.setValueState(sap.ui.core.ValueState.Error);
+        oTxtProjBussJust.setValueStateText("The Business Justification should not be same as description of project");
+        oTxtProjBussJust.setShowValueStateMessage(true);
+        oTxtProjBussJust.focus();
+        error = true;
+    }
+
+    return error;
+}
+
+function validate_additionalCCode() {
+    var error = false;
+    var table = document.getElementById("tabMultiCC");
+
+}
+
+function resetFields() {
+    forms.forEach(function(form) {
+        form.getAggregation("form").getAggregation("formContainers")[0].getAggregation("formElements").forEach(function(element) {
+            var field = element.getFields()[0];
+            if (field instanceof sap.m.Input || field instanceof sap.m.Select) {
+                field.setValueState(sap.ui.core.ValueState.None);
+            } else if (field instanceof sap.m.Switch) {
+                field.removeStyleClass("error-switch");
+            }
+        });
+    });
+}
+
+function setUI() {
+
+    // Reset form fields.
+    forms.forEach(function(form) {
+        form.getAggregation("form").getAggregation("formContainers")[0].getAggregation("formElements").forEach(function(element) {
+            var field = element.getFields()[0];
+            if (typeof field.setValueState === "function") {
+                field.setValueState(sap.ui.core.ValueState.None);
+            }
+        });
+    });
+
+    btnAddAttachment.setVisible(modeloPageProj.oData.CAN_ATTACH);
+
+    rbITLYes.setSelected(modeloPageProj.oData.ITL === "Y");
+    rbITLNo.setSelected(modeloPageProj.oData.ITL !== "Y");
+}
+
+function addDirtyEvents() {
+    forms.forEach(function(form) {
+        form.getAggregation("form").getAggregation("formContainers")[0].getAggregation("formElements").forEach(function(element) {
+            var field = element.getFields()[0];
+            if (typeof field.attachChange === "function") {
+                field.attachChange(function(evt) {
+                    dirty.setDirty(true);
+                });
+            }
+        });
+    });
+}
+
+function addDirtyEvents() {
+    forms.forEach(function(form) {
+        form.getAggregation("form").getAggregation("formContainers")[0].getAggregation("formElements").forEach(function(element) {
+            var field = element.getFields()[0];
+            if (typeof field.attachChange === "function") {
+                field.attachChange(function(evt) {
+                    dirty.setDirty(true);
+                });
+            }
+        });
+    });
+}
+
+function toggleMode() {
+     ;
+    var mode = modeloPageProj.oData.DISPLAY_OR_EDIT;
+    mode = (mode === "DISPLAY") ? "EDIT" : "DISPLAY";
+
+    modelUrlParameters.setData({
+        FORM_GUID:  modelvlAttributesBlock1.oData.FORM_GUID,
+        MODE: mode,
+        PROJ: modelUrlParameters.oData.PROJ,
+        FROM: modelUrlParameters.oData.FROM,
+        PROCESSING_REGION: modeloPageProj.oData.PROCESSING_REGION,
+        COMPANY_CODE: modeloPageProj.oData.COMPANY_CODE
+    });
+    oApp.setBusy(true);
+    getOnlineGetDetail();
+}
+
+function addDirtyEvents() {
+    forms.forEach(function(form) {
+        form.getAggregation("form").getAggregation("formContainers")[0].getAggregation("formElements").forEach(function(element) {
+            var field = element.getFields()[0];
+            if (typeof field.attachChange === "function") {
+                field.attachChange(function(evt) {
+                    dirty.setDirty(true);
+                });
+            }
+        });
+    });
+}
+
+
+function loadProject(inc) {
+    listIndex += inc;
+    if (listIndex >= 0 && listIndex <= listRef.length) {
+        var projectid = listRef[listIndex];
+        modelUrlParameters.setProperty("/MODE","DISPLAY");
+        modelUrlParameters.setProperty("/FORM_GUID",projectid.FORM_GUID);
+        modelUrlParameters.setProperty("/PROJ",projectid.ID);
+        oApp.setBusy(true);
+         getOnlineGetDetail();
+    }
+
+    setNavVisible();
+}
+

@@ -1,0 +1,39 @@
+var dirty = null;
+var fc = null;
+var dc = null;
+// ;
+
+sap.ui.getCore().attachInit(function(data) {
+    jQuery.getScript("/neptune/public/application/zdci_nad_shared/js/discoveryFiori.js", function() {
+        dc = new discoveryFiori.ChildComponent(this, "ZDCI_NAD_PROJECT_REQUEST", loadRequest.bind(this));
+        dirty = new discoveryFiori.DirtyHandler();
+        fu = new discoveryFiori.FileUploader(listAttachments,oplForm,AttachmentCategories);
+
+        discoveryFiori.addExpandButtons(oplForm);
+
+        loadCSS("/neptune/public/application/ZDCI_NAD_PROJECT_REQUEST/css/app.css");
+
+        oApp.setBusyIndicatorDelay(0);
+
+    });
+
+    setTimeout(function() {
+        addDirtyEvents();
+    }, 200);
+});
+
+
+// Run initialization if we're not in a subcomponent.
+var hasParent = true;
+var component = sap.ui.core.Component.getOwnerComponentFor(this);
+if (!component
+        || typeof component.getComponentData() !== "object"
+        || !component.getComponentData().child) {
+    hasParent = false;
+    btnNavBack.setVisible(false);
+    setTimeout(function() {
+        getUrlParameters();
+        oApp.setBusy(true);
+        getOnlineGetDetail();
+    },1000);
+}
