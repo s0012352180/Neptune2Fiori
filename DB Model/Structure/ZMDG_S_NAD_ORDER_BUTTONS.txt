@@ -1,0 +1,16 @@
+ ZMDG_S_NAD_ORDER_BUTTONS - Order Appln. buttons
+   Structure
+   Active version
+ 
+ Component     K Type Length Type       Short Text
+ ____________________________________________________________
+ FORM_GUID       CHAR     32 SYSUUID_C  UUID in character form
+ CREATE          STRG        ALV_STRING Filter String
+ CHANGE          STRG        ALV_STRING Filter String
+ SAVE            STRG        ALV_STRING Filter String
+ SUBMITWTH_ERR   STRG        ALV_STRING Filter String
+ DELETE          STRG        ALV_STRING Filter String
+ SUBMIT          STRG        ALV_STRING Filter String
+ REJECT          STRG        ALV_STRING Filter String
+ WITHDRAWN       STRG        ALV_STRING Filter String
+ RESUBMIT        STRG        ALV_STRING Filter String

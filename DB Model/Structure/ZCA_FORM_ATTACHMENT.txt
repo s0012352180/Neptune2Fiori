@@ -1,0 +1,21 @@
+  ZCA_FORM_ATTACHMENT Attachment of form
+    Structure
+    Active version
+
+
+  Field Structure
+    Number of fields: 10
+    Total of field lengths: 0
+
+  Component     K Type Length Type       Short Text
+  ____________________________________________________________
+  ICON            STRG
+  ICON_COLOR      STRG
+  FILE_NAME       STRG
+  EXTENSION       STRG
+  MIME_TYPE       STRG
+  FILE_DATA       STRG
+  UUID            STRG
+  HREF            STRG
+  CATEGORY        STRG
+  CATEGORY_TEXT   STRG

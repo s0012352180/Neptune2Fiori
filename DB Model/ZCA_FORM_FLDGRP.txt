@@ -1,0 +1,73 @@
+﻿
+
+
+
+
+        ABAP Dictionary                Rel. 757                 ZCA_FORM_FLDGRP
+        ______________________________________________________________________
+
+
+        ZCA_FORM_FLDGRP
+          Short description:Form fieldgroup details ( MD - Sharepoint Replacement )
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 4
+          Total of field lengths: 124
+
+        Field Name  K Type Length Data Elem.      Short Text
+        ____________________________________________________________
+        FORM_NAME   X CHAR     30 ZFORM_NAME      MDG - Form Name
+        FORM_VER    X NUMC      4 ZFORM_VER       MDG - Form Version
+        FLDGRP_ID   X CHAR     30 ZFORM_FLDGRP_ID MDG - Field Group to group all fields
+        FLDGRP_DESC   CHAR     60 ZFLDGRP_DESC    MDG - Field Group Description
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:APPL0
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          FORM_NAME is checked against check table ZCA_FORM
+          Field assignment:
+            ZCA_FORM - FORM_NAME = ZCA_FORM_FLDGRP - FORM_NAME
+            ZCA_FORM - FORM_VER = ZCA_FORM_FLDGRP - FORM_VER
+
+          FORM_VER is checked against check table ZCA_FORM
+          Field assignment:
+            ZCA_FORM - FORM_NAME = ZCA_FORM_FLDGRP - FORM_NAME
+            ZCA_FORM - FORM_VER = ZCA_FORM_FLDGRP - FORM_VER
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                        11.02.2026                             1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,146 @@
+﻿
+
+
+
+
+        ABAP Dictionary                Rel. 757                  ZCA_APPRVR_LIST
+        ______________________________________________________________________
+
+
+        ZCA_APPRVR_LIST
+          Short description:MDG - Form Approver List
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 23
+          Total of field lengths: 521
+
+        Field Name            K Type Length Data Elem.     Short Text
+        ____________________________________________________________
+        FORM_NAME             X CHAR     30 ZFORM_NAME     MDG - Form Name
+        FORM_VER              X NUMC      4 ZFORM_VER      MDG - Form Version
+        APPR_STEP             X CHAR     30 ZFORM_APPRSTEP MDG - Form Approver Step
+        APPR_SEQNO            X NUMC      4 NUMC4          Count parameters
+        WORKCENTER_ID           NUMC      8 HROBJID        Object ID
+        AGENT_ID_LIST           CHAR    100 CHAR100        Character 100
+        AGENT_FUNCTION          CHAR     30 ZMDG_AGENT_FM  MDG - Agent Determination FM
+        AGENT_ID                CHAR     30 CHAR30         30 Characters
+        APPR_DESC               CHAR     80 ZFORM_APPRDESC MDG - Form Approver Description
+        REJECT_IND              CHAR      1 FLAG           General Flag
+        REMINDER_INTV           INT2      5 INT2           2 Byte Signed Integer
+        NO_OF_REMINDER          INT2      5 INT2           2 Byte Signed Integer
+        EMAIL_URL_PROCESSID     CHAR     32 CHAR32         Character field, length 32
+        SUBMIT_SCENARIO         CHAR     20 CHAR20         Char 20
+        REJECT_SCENARIO         CHAR     20 CHAR20         Char 20
+        ERROR_SCENARIO          CHAR     20 CHAR20         Char 20
+        RESUBMIT_SCENAR         CHAR     20 CHAR20         Char 20
+        SUBMIT_REMINDER_SCENA   CHAR     20 CHAR20         Char 20
+        REJECT_REMINDER_SCENA   CHAR     20 CHAR20         Char 20
+        ESCULATION_SCENARIO     CHAR     20 CHAR20         Char 20
+        REJECT_ESCULATE_SCENA   CHAR     20 CHAR20         Char 20
+        REJECT_ONLY_ONE_LEVEL   CHAR      1 ZMDGREJECTONE  Reject only one level back
+        NOTIFICATION_ONLY       CHAR      1 FLAG           General Flag
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:APPL0
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          FORM_NAME is checked against check table ZCA_FORM
+          Field assignment:
+            ZCA_FORM - FORM_NAME = ZCA_APPRVR_LIST - FORM_NAME
+            ZCA_FORM - FORM_VER = ZCA_APPRVR_LIST - FORM_VER
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                        11.02.2026                             1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+        ABAP Dictionary                Rel. 757                  ZCA_APPRVR_LIST
+        ______________________________________________________________________
+
+
+
+          FORM_VER is checked against check table ZCA_FORM
+          Field assignment:
+            ZCA_FORM - FORM_NAME = ZCA_APPRVR_LIST - FORM_NAME
+            ZCA_FORM - FORM_VER = ZCA_APPRVR_LIST - FORM_VER
+
+          REJECT_IND checked against fixed values from domain FLAG
+          Fixed values:
+                    Flag is not set
+            X       Flag set (event raised)
+
+          REJECT_ONLY_ONE_LEVEL checked against fixed values from domain FLAG
+          Fixed values:
+                    Flag is not set
+            X       Flag set (event raised)
+
+          NOTIFICATION_ONLY checked against fixed values from domain FLAG
+          Fixed values:
+                    Flag is not set
+            X       Flag set (event raised)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                        11.02.2026                             2
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

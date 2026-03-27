@@ -1,0 +1,25 @@
+ 
+  ZCA_FORMDETAIL
+    Short description:SharePoint Form - Form Details
+    Transparent table
+	
+ Field Name       K Type Length Data Elem.      Short Text
+ ____________________________________________________________
+ CLNT             X CLNT      3 MANDT           Client
+ FORM_GUID        X CHAR     32 SYSUUID_C       UUID in character form
+ FORM_NAME          CHAR     30 ZFORM_NAME      MDG - Form Name
+ FORM_VER           NUMC      4 ZFORM_VER       MDG - Form Version
+ INITIATED_BY       CHAR     12 SYUNAME         User Name
+ START_DATE         DATS      8 DATUM           Date
+ START_TIME         TIMS      6 PSAP_INIT_TIME  Start Time of Process
+ LATEST_STARTDATE   DATS      8 DATUM           Date
+ LATEST_STARTTIME   TIMS      6 PSAP_START_TIME Start Time of Process Step
+ FORM_STATUS        CHAR     22 ZCA_FORM_STATUS SharePoint - Form Status
+ PARENT_WF_ID       NUMC     12 SWW_WIID        Work item ID
+ APPR_STEP          CHAR     30 ZFORM_APPRSTEP  MDG - Form Approver Step
+ AGENT_ID_LIST      CHAR    100 CHAR100         Character 100
+ WORKCENTER_ID      NUMC      8 HROBJID         Object ID
+ FIRST_REM_DATE     DATS      8 DATUM           Date
+ NEXT_REM_DATE      DATS      8 DATUM           Date
+ NO_OF_REM_SENT     INT2      5 INT2            2 Byte Signed Integer
+ DEADLINE_DATE      DATS      8 DATUM           Date

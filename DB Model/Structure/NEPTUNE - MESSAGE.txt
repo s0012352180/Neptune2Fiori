@@ -1,0 +1,31 @@
+/NEPTUNE/MESSAGE
+  Short description:Neptune Application Messages
+  Structure
+  Active version
+
+
+Field Structure
+  Number of fields: 9
+  Total of field lengths: 494
+
+Component  K Type Length Type
+Short Text
+____________________________________________________________
+FIELD_NAME   CHAR     50 /NEPTUNE/FIELD_NAME
+ Field Name
+TYPE         CHAR      1 BAPI_MTYPE
+ Message type: S Success, E Error, W Warning, I Info, A Abort
+ID           CHAR     20 SYMSGID
+ Message Class
+NUMBER       NUMC      3 SYMSGNO
+ Message Number
+MESSAGE      CHAR    220 BAPI_MSG
+ Message Text
+MESSAGE_V1   CHAR     50 SYMSGV
+ Message Variable
+MESSAGE_V2   CHAR     50 SYMSGV
+ Message Variable
+MESSAGE_V3   CHAR     50 SYMSGV
+ Message Variable
+MESSAGE_V4   CHAR     50 SYMSGV
+ Message Variable

@@ -1,0 +1,48 @@
+ ZMDG_PROJ_FORM_S_READ_ONLY - To set field to read only in FIORI App 
+   Structure 
+
+ Component              K Type Length Type       Short Text
+ ____________________________________________________________
+ R_STEP_GUID              STRG
+ R_PROCESSING_REGION      STRG
+ R_REQUESTER_NAME         STRG
+ R_AUTH_BY_ID             STRG
+ R_AUTH_BY_NAME           STRG
+ R_AUTH_BY_DATE           STRG
+ R_PROJECTNAME            STRG
+ R_PROJ_DESC              STRG
+ R_BUSS_JUSTIFY           STRG
+ R_REPLACE_EXIT_PRJ       STRG
+ R_PREV_PROJ_CODE         STRG
+ R_ITL_PREV_PROJ_CODE     STRG
+ R_IMO_PREV_PROJ_CODE     STRG
+ R_PROJECT_TYPE           STRG
+ R_ITL                    STRG
+ R_CLS                    STRG
+ R_CAPEX_TI               STRG
+ R_CAPEX_TI_AMT_INC       STRG
+ R_CAPEX_REQ_AMOUNT       STRG
+ R_CAPEX_REQ_CURR         STRG
+ R_ITL_REQ_AMOUNT         STRG
+ R_ITL_REQ_CURR           STRG
+ R_RESP_LEAD              STRG
+ R_ONBEHALF_NAME          STRG
+ R_EXEC_CATEGORY          STRG
+ R_QUADRANT               STRG
+ R_INITIATIVE_GROUP       STRG
+ R_FUNCTION               STRG
+ R_ASSET_CLASS            STRG
+ R_ITL_ASSET_CLASS        STRG
+ R_PRIORITY               STRG
+ R_COMPANY_CODE           STRG
+ R_ADDITIONAL_COMP_CODE   STRG
+ R_KOSTL                  STRG
+ R_PROFIT_CENTER          STRG
+ R_ORDER_TYPE             STRG
+ R_GEOGRAPHY              STRG
+ R_STATE_US               STRG
+ R_CURRENCY               STRG
+ R_ORDER_DATE             STRG
+ R_PROJ_COMPLETION_DATE   STRG
+ R_PROJECT_CODE           STRG
+ R_INTERNAL_NO            STRG

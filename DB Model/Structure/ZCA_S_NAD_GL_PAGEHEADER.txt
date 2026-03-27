@@ -1,0 +1,13 @@
+ZCA_S_NAD_GL_PAGEHEADER - Create - Additional Fields
+ 
+
+Component     K Type Length Type       Short Text
+____________________________________________________________
+FORM_GUID       STRG        ALV_STRING Filter String
+INITIATED_BY    STRG        ALV_STRING Filter String
+START_DATE      STRG        ALV_STRING Filter String
+START_TIME      STRG        ALV_STRING Filter String
+OBJECT_NAME     STRG        ALV_STRING Filter String
+CURRENT_STEP    STRG        ALV_STRING Filter String
+CURRENT_AGENT   STRG        ALV_STRING Filter String
+COMMENTS        STRG        ALV_STRING Filter String

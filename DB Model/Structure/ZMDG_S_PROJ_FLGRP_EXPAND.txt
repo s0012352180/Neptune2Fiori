@@ -1,0 +1,11 @@
+ZMDG_S_PROJ_FLGRP_EXPAND - Structure to set visibility for Field Group
+  Structure
+  Active version
+ 
+Component           K Type Length Type       Short Text
+____________________________________________________________
+PROJ_FLGRP_0001_MOD   STRG        ALV_STRING Filter String
+PROJ_FLGRP_0002_MOD   STRG        ALV_STRING Filter String
+PROJ_FLGRP_0003_MOD   STRG        ALV_STRING Filter String
+PROJ_FLGRP_0004_MOD   STRG        ALV_STRING Filter String
+PROJ_FLGRP_0005_MOD   STRG        ALV_STRING Filter String

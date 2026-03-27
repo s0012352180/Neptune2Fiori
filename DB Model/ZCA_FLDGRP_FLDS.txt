@@ -1,0 +1,146 @@
+﻿
+
+
+
+
+        ABAP Dictionary                Rel. 757                  ZCA_FLDGRP_FLDS
+        ______________________________________________________________________
+
+
+        ZCA_FLDGRP_FLDS
+          Short description:MDG - Fields(Fieldgroup) Details
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 10
+          Total of field lengths: 258
+
+        Field Name K Type Length Data Elem.       Short Text
+        ____________________________________________________________
+        FORM_NAME  X CHAR     30 ZFORM_NAME       MDG - Form Name
+        FORM_VER   X NUMC      4 ZFORM_VER        MDG - Form Version
+        FLDGRP_ID  X CHAR     30 ZFORM_FLDGRP_ID  MDG - Field Group to group all fields
+        FIELD_NAME X CHAR     30 ZSECTN_FIELDNAME MDG - Field Name
+        LABEL_NAME   CHAR     80 ZFIELD_LABELNAME MDG - Field Label Name
+        DEF_VALUE    CHAR     80 ZFIELD_DEFVAL    MDG - Field Default Value
+        VISIBLE      CHAR      1 ZFIELD_BOOLN     MDG - X / Space ( yes/No)
+        READ_ONLY    CHAR      1 ZFIELD_BOOLN     MDG - X / Space ( yes/No)
+        EDITABLE     CHAR      1 ZFIELD_BOOLN     MDG - X / Space ( yes/No)
+        MANDATORY    CHAR      1 ZFIELD_BOOLN     MDG - X / Space ( yes/No)
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:APPL0
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          FORM_NAME is checked against check table ZCA_FORM
+          Field assignment:
+            ZCA_FORM - FORM_NAME = ZCA_FLDGRP_FLDS - FORM_NAME
+            ZCA_FORM - FORM_VER = ZCA_FLDGRP_FLDS - FORM_VER
+
+          FORM_VER is checked against check table ZCA_FORM
+          Field assignment:
+            ZCA_FORM - FORM_NAME = ZCA_FLDGRP_FLDS - FORM_NAME
+            ZCA_FORM - FORM_VER = ZCA_FLDGRP_FLDS - FORM_VER
+
+          FLDGRP_ID is checked against check table ZCA_FORM_FLDGRP
+          Field assignment:
+            ZCA_FORM_FLDGRP - FORM_NAME = ZCA_FLDGRP_FLDS - FORM_NAME
+            ZCA_FORM_FLDGRP - FORM_VER = ZCA_FLDGRP_FLDS - FORM_VER
+            ZCA_FORM_FLDGRP - FLDGRP_ID = ZCA_FLDGRP_FLDS - FLDGRP_ID
+
+          VISIBLE checked against fixed values from domain ZFIELD_BOOLN
+          Fixed values:
+                    No
+            X       Yes
+
+
+        ______________________________________________________________________
+        SAP AG                        11.02.2026                             1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+
+
+        ABAP Dictionary                Rel. 757                  ZCA_FLDGRP_FLDS
+        ______________________________________________________________________
+
+
+
+          READ_ONLY checked against fixed values from domain ZFIELD_BOOLN
+          Fixed values:
+                    No
+            X       Yes
+
+          EDITABLE checked against fixed values from domain ZFIELD_BOOLN
+          Fixed values:
+                    No
+            X       Yes
+
+          MANDATORY checked against fixed values from domain ZFIELD_BOOLN
+          Fixed values:
+                    No
+            X       Yes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                        11.02.2026                             2
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

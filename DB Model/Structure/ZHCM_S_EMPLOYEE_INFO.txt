@@ -1,0 +1,21 @@
+ ZHCM_S_EMPLOYEE_INFO
+   Short description:FIORI - Employee Info
+   Structure
+   Active version
+
+ 
+
+ Component    K Type Length Type       Short Text
+ ____________________________________________________________
+ PERNR          NUMC      8 PERNR_D    Personnel Number
+ ENAME          CHAR     40 EMNAM      Formatted Name of Employee or Applicant
+ EMAIL_TEXT     STRG        ALV_STRING Filter String
+ EMAIL          CHAR    241 AD_SMTPADR E-Mail Address
+ ORGUNIT_TXT    CHAR     40 STEXT      Object Name
+ POSITION_TXT   CHAR     40 STEXT      Object Name
+ CELL_TEXT      STRG        ALV_STRING Filter String
+ CELL           CHAR    100 CHAR100    Character 100
+ PHONE_TEXT     STRG        ALV_STRING Filter String
+ PHONE          CHAR    100 CHAR100    Character 100
+ OTHER_TYPE     STRG        ALV_STRING Filter String
+ OTHER          CHAR    100 CHAR100    Character 100

@@ -1,0 +1,73 @@
+﻿
+
+
+
+
+        ABAP Dictionary                Rel. 757                   ZCA_STEPDETAIL
+        ______________________________________________________________________
+
+
+        ZCA_STEPDETAIL
+          Short description:SharePoint - Step detail of process
+          Transparent table
+          Active version
+
+
+        Field Structure
+          Number of fields: 14
+          Total of field lengths: 1211
+
+        Field Name         K Type Length Data Elem.      Short Text
+        ____________________________________________________________
+        CLNT               X CLNT      3 MANDT           Client
+        FORM_GUID          X CHAR     32 SYSUUID_C       UUID in character form
+        STEP_GUID          X CHAR     32 SYSUUID_C       UUID in character form
+        APPR_SEQNO           NUMC      4 NUMC4           Count parameters
+        APPR_STEP            CHAR     30 ZFORM_APPRSTEP  MDG - Form Approver Step
+        STEP_STATUS          CHAR     22 ZCA_STEP_STATUS SharePoint - Step Status
+        PROCESSED_BY         CHAR     12 SYUNAME         User Name
+        FORWARDED_BY         CHAR     12 SYUNAME         User Name
+        COMPLETION_DATE      DATS      8 DATUM           Date
+        COMPLETION_TIME      TIMS      6 UZEIT           Time
+        CHILD_WF_ID          NUMC     12 SWW_WFID        Workflow ID
+        COMMENTS             CHAR   1024 CHAR1024        Character 1024
+        ON_HOLD_SINCE_DATE   DATS      8 DATS            Field of type DATS
+        ON_HOLD_SINCE_TIME   TIMS      6 TIMS            Field of type TIMS
+        ____________________________________________________________
+
+        Technical Settings
+          Data type:APPL1
+          Size category:0
+          Buffering now allowed
+          Logging switched off
+
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          STEP_STATUS checked against fixed values from domain ZCA_STEP_STATUS
+          Fixed values:
+            COMPLETEDCompleted
+            ERROR   Incorrect
+            READY   New
+            REJECTEDRejected
+            SELECTEDReserved
+            STARTED In Process
+            WITHDRAWNWithdrawn
+
+
+
+
+
+
+
+
+
+        ______________________________________________________________________
+        SAP AG                        11.02.2026                             1
+
+
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

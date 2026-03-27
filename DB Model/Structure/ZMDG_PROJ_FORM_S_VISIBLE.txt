@@ -1,0 +1,54 @@
+ ZMDG_PROJ_FORM_S_VISIBLE ProjCode FIORI - To set field to visibility attribute
+   Structure
+   Active version
+
+
+ Field Structure
+   Number of fields: 50
+   Total of field lengths: 0
+
+ Component              K Type Length Type       Short Text
+ ____________________________________________________________
+ V_STEP_GUID              STRG
+ V_PROCESSING_REGION      STRG
+ V_REQUESTER_NAME         STRG
+ V_AUTH_BY_ID             STRG
+ V_AUTH_BY_NAME           STRG
+ V_AUTH_BY_DATE           STRG
+ V_PROJECTNAME            STRG
+ V_PROJ_DESC              STRG
+ V_BUSS_JUSTIFY           STRG
+ V_REPLACE_EXIT_PRJ       STRG
+ V_PREV_PROJ_CODE         STRG
+ V_ITL_PREV_PROJ_CODE     STRG
+ V_IMO_PREV_PROJ_CODE     STRG
+ V_PROJECT_TYPE           STRG
+ V_ITL                    STRG
+ V_CLS                    STRG
+ V_CAPEX_TI               STRG
+ V_CAPEX_TI_AMT_INC       STRG
+ V_CAPEX_REQ_AMOUNT       STRG
+ V_CAPEX_REQ_CURR         STRG
+ V_ITL_REQ_AMOUNT         STRG
+ V_ITL_REQ_CURR           STRG
+ V_TOTALAMT               STRG
+ V_RESP_LEAD              STRG
+ V_ONBEHALF_NAME          STRG
+ V_EXEC_CATEGORY          STRG
+ V_QUADRANT               STRG
+ V_INITIATIVE_GROUP       STRG
+ V_FUNCTION               STRG
+ V_ASSET_CLASS            STRG
+ V_ITL_ASSET_CLASS        STRG
+ V_PRIORITY               STRG
+ V_COMPANY_CODE           STRG
+ V_ADDITIONAL_COMP_CODE   STRG
+ V_KOSTL                  STRG
+ V_GEOGRAPHY              STRG
+ V_STATE_US               STRG
+ V_CURRENCY               STRG
+ V_PROFIT_CENTER          STRG
+ V_ORDER_TYPE             STRG
+ V_ORDER_DATE             STRG
+ V_PROJ_COMPLETION_DATE   STRG
+ V_PROJECT_CODE           STRG

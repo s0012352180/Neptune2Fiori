@@ -1,0 +1,34 @@
+﻿
+        ZCA_APPRVR_ATTR
+          Short description: Fieldgroup Approver attributes
+
+
+        Field Name   K Type Length Data Elem.      Short Text
+        ____________________________________________________________
+        FORM_NAME    X CHAR     30 ZFORM_NAME      MDG - Form Name
+        FORM_VER     X NUMC      4 ZFORM_VER       MDG - Form Version
+        APPR_STEP    X CHAR     30 ZFORM_APPRSTEP  MDG - Form Approver Step
+        FLDGRP_ID    X CHAR     30 ZFORM_FLDGRP_ID MDG - Field Group to group all fields
+        CHECK_METHOD   CHAR     61 SEOCPDNAME      Full Component Name
+        ____________________________________________________________
+ 
+
+        Input Checks (Foreign Keys, Fiexed Values)
+
+          FORM_NAME is checked against check table ZCA_FORM
+          Field assignment:
+            ZCA_FORM - FORM_NAME = ZCA_APPRVR_ATTR - FORM_NAME
+            ZCA_FORM - FORM_VER = ZCA_APPRVR_ATTR - FORM_VER
+
+          FORM_VER is checked against check table ZCA_FORM
+          Field assignment:
+            ZCA_FORM - FORM_NAME = ZCA_APPRVR_ATTR - FORM_NAME
+            ZCA_FORM - FORM_VER = ZCA_APPRVR_ATTR - FORM_VER
+
+          APPR_STEP is checked against check table ZCA_APPRVR_LIST
+          Field assignment:
+            ZCA_APPRVR_LIST - FORM_NAME = ZCA_APPRVR_ATTR - FORM_NAME
+            ZCA_APPRVR_LIST - FORM_VER = ZCA_APPRVR_ATTR - FORM_VER
+            ZCA_APPRVR_LIST - APPR_STEP = ZCA_APPRVR_ATTR - APPR_STEP
+            ZCA_APPRVR_LIST - APPR_SEQNO = * (generic) 
+			

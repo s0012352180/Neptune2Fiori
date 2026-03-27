@@ -1,0 +1,11 @@
+
+    ZCA_S_NAD_GL_AGENT -  Agent List
+      Structure
+      Active version
+ 
+
+    Component   K Type Length Type       Short Text
+    ____________________________________________________________
+    AGENT_ID      STRG        ALV_STRING Filter String
+    AGENT_NAME    STRG        ALV_STRING Filter String
+    AGENT_EMAIL   STRG        ALV_STRING Filter String

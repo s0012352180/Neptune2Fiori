@@ -1,0 +1,51 @@
+ ZMDG_PROJ_FORM_S_EDITABLE - Structure for Editable FIORI app
+   Structure
+   Active version
+
+
+
+ Component              K Type Length Type       Short Text
+ ____________________________________________________________
+ E_STEP_GUID              STRG
+ E_PROCESSING_REGION      STRG
+ E_REQUESTER_NAME         STRG
+ E_AUTH_BY_ID             STRG
+ E_AUTH_BY_NAME           STRG
+ E_AUTH_BY_DATE           STRG
+ E_PROJECTNAME            STRG
+ E_PROJ_DESC              STRG
+ E_BUSS_JUSTIFY           STRG
+ E_REPLACE_EXIT_PRJ       STRG
+ E_PREV_PROJ_CODE         STRG
+ E_ITL_PREV_PROJ_CODE     STRG
+ E_IMO_PREV_PROJ_CODE     STRG
+ E_PROJECT_TYPE           STRG
+ E_ITL                    STRG
+ E_CLS                    STRG
+ E_CAPEX_TI               STRG
+ E_CAPEX_TI_AMT_INC       STRG
+ E_CAPEX_REQ_AMOUNT       STRG
+ E_CAPEX_REQ_CURR         STRG
+ E_ITL_REQ_AMOUNT         STRG
+ E_ITL_REQ_CURR           STRG
+ E_TOTALAMT               STRG
+ E_RESP_LEAD              STRG
+ E_ONBEHALF_NAME          STRG
+ E_EXEC_CATEGORY          STRG
+ E_QUADRANT               STRG
+ E_INITIATIVE_GROUP       STRG
+ E_FUNCTION               STRG
+ E_ASSET_CLASS            STRG
+ E_ITL_ASSET_CLASS        STRG
+ E_PRIORITY               STRG
+ E_COMPANY_CODE           STRG
+ E_ADDITIONAL_COMP_CODE   STRG
+ E_KOSTL                  STRG
+ E_GEOGRAPHY              STRG
+ E_STATE_US               STRG
+ E_CURRENCY               STRG
+ E_PROFIT_CENTER          STRG
+ E_ORDER_TYPE             STRG
+ E_ORDER_DATE             STRG
+ E_PROJ_COMPLETION_DATE   STRG
+ E_PROJECT_CODE           STRG
